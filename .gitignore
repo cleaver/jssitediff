@@ -1,0 +1,17 @@
+/node_modules
+
+# IDE
+.vscode
+
+## OS files
+.DS_Store
+
+# secrets
+.env
+.env.*
+
+# content
+/content
+
+# testing
+/coverage
