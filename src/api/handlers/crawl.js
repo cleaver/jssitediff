@@ -1,4 +1,8 @@
-/**  @module crawl */
+/**
+ * Crawl a site.
+ *
+ * @module api/handlers/crawl
+ */
 const axios = require('axios');
 const cheerio = require('cheerio');
 const filterUrls = require('../../util/filterUrls');

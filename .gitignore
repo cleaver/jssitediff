@@ -10,8 +10,8 @@
 .env
 .env.*
 
-# content
-/content
-
 # testing
 /coverage
+
+# config directory
+/sitediff

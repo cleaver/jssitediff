@@ -1,4 +1,22 @@
+/**
+ * API for `crawl` operations.
+ *
+ * @module api/crawl
+ */
 const crawlHandler = require('./handlers/crawl');
+
+/**
+ * @function getPath
+ * Get the path for a crawl.
+ *
+ * @private
+ * @param {object} config - Configuration object.
+ * @returns {string} - path.
+ */
+const getPath = (config) => {
+  const target = config.get('command.options.target');
+  return config.get(`${target}.url`);
+};
 
 /**
  * @callback storePageCallback
@@ -19,13 +37,13 @@ const crawlHandler = require('./handlers/crawl');
  * @function crawl
  * Crawl a website to a specified depth.
  *
- * @param {string} path - Path to start of crawl. EG: `'http://example.com/foo'`.
- * @param {number} depth - Maximum depth for the crawl. Optional. Default: `3`.
+ * @param {object} config - Configuration object for the crawl.
  * @param {storePageCallback} storePageCb - Optional. Callback to store a crawled page.
  * @param {visitedCallback} visitedCb - Optional. Callback to track visited page.
  */
-const crawl = (path, depth = 3, storePageCb = null, visitedCb = null) => {
-  const url = new URL(path);
+const crawl = (config, storePageCb = null, visitedCb = null) => {
+  const url = new URL(getPath(config));
+  const depth = config.get('settings.depth');
   let storePage = storePageCb;
   // default storePage callback
   if (typeof storePage !== 'function') {

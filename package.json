@@ -9,6 +9,8 @@
   "dependencies": {
     "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.6",
+    "convict": "^6.1.0",
+    "js-yaml": "^4.1.0",
     "yargs": "^16.2.0"
   },
   "devDependencies": {

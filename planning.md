@@ -2,14 +2,12 @@
 
 ## packages
 
-- minimist
-- minimist-options
-- normalize-url
-- commist
+- yargs
 - cli-columns
 - chalk
 - axios
 - diff
+- convict
 
 ## pipeline
 
