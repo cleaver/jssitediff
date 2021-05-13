@@ -4,6 +4,8 @@
  * @module api/crawl
  */
 const crawlHandler = require('./handlers/crawl');
+const defaultStorage = require('./storage/default-storage');
+const defaultTracker = require('./tracker/default-tracker');
 
 /**
  * @function getPath
@@ -27,7 +29,7 @@ const getPath = (config) => {
  * @param {Cheerio} page - Page parsed by Cheerio.
  */
 /**
- * @callback visitedCallback
+ * @callback trackerCallback
  * Callback to check if we've already fetched the URL.
  *
  * @param {URL} url - URL of page to be fetched.
@@ -39,7 +41,7 @@ const getPath = (config) => {
  *
  * @param {object} config - Configuration object for the crawl.
  * @param {storePageCallback} storePageCb - Optional. Callback to store a crawled page.
- * @param {visitedCallback} visitedCb - Optional. Callback to track visited page.
+ * @param {trackerCallback} visitedCb - Optional. Callback to track visited page.
  */
 const crawl = (config, storePageCb = null, visitedCb = null) => {
   const url = new URL(getPath(config));
@@ -47,25 +49,12 @@ const crawl = (config, storePageCb = null, visitedCb = null) => {
   let storePage = storePageCb;
   // default storePage callback
   if (typeof storePage !== 'function') {
-    storePage = (pagePath, status, page) => {
-      if (status.status >= 400) {
-        console.log(pagePath.href, ' -> ', status.status, status.statusText);
-      } else {
-        console.log(pagePath.href, ' -> ', page('title').text());
-      }
-    };
+    storePage = defaultStorage;
   }
   // default visited callback
   let visited = visitedCb;
   if (typeof visited !== 'function') {
-    const visitedUrls = new Set();
-    visited = (visitedUrl) => {
-      if (visitedUrls.has(visitedUrl.href)) {
-        return true;
-      }
-      visitedUrls.add(visitedUrl.href);
-      return false;
-    };
+    visited = defaultTracker;
   }
   // call it!
   crawlHandler(url, depth, storePage, visited);
