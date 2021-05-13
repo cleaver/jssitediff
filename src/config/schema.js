@@ -1,3 +1,8 @@
+/**
+ * Schema used for parsing the configuration
+ *
+ * @module config/schema
+ */
 const schema = {
   before: {
     url: {

@@ -26,8 +26,15 @@ exports.builder = {
     type: 'string',
   },
 };
+
+/**
+ * Command handler for `yargs` command.
+ *
+ * @param {array} argv - parsed and validated command options.
+ */
 exports.handler = (argv) => {
   const config = configLoader(argv.directory);
+  // ensure `depth` is in config or supplied as option.
   if (typeof argv.depth === 'number') {
     config.set('settings.depth', argv.depth);
   } else if (!config.has('settings.depth')) {

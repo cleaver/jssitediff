@@ -1,4 +1,9 @@
 /**
+ * Utility module for URL filtering
+ *
+ * @module util/filteredUrls
+ */
+/**
  * @function filteredUrls
  * Filter a list of URLs, removing external links and duplicates.
  *

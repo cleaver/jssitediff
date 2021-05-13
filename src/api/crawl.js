@@ -31,7 +31,7 @@ const getPath = (config) => {
  * Callback to check if we've already fetched the URL.
  *
  * @param {URL} url - URL of page to be fetched.
- * @return {boolean} - true if it's been visited, false otherwise.
+ * @returns {boolean} - true if it's been visited, false otherwise.
  */
 /**
  * @function crawl

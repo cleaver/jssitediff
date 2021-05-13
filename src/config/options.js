@@ -1,3 +1,8 @@
+/**
+ * Global configuration options.
+ *
+ * @module config/options
+ */
 module.exports.globalOpts = {
   directory: {
     alias: 'C',
