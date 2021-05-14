@@ -36,3 +36,8 @@ CLI -> API -> Handler
     - call handler
 - Handler:
     - execute the action
+
+
+## Logging
+
+- wrap logger... choice between text output and json

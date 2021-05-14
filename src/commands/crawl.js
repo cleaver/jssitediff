@@ -40,12 +40,7 @@ exports.handler = (argv) => {
   } else if (!config.has('settings.depth')) {
     throw new Error('`depth` must be set in config or command line.');
   }
-  config.set('command', {
-    name: 'crawl',
-    options: {
-      target: argv.target,
-      store: argv.store,
-    },
-  });
+  config.set('command.name', 'crawl');
+  config.set('command.options', { target: argv.target, store: argv.store });
   crawlApi(config);
 };

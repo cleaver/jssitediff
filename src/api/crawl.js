@@ -6,6 +6,7 @@
 const crawlHandler = require('./handlers/crawl');
 const defaultStorage = require('./storage/default-storage');
 const defaultTracker = require('./tracker/default-tracker');
+const pathsTracker = require('./tracker/paths-tracker');
 
 /**
  * @function getPath
@@ -49,12 +50,16 @@ const crawl = (config, storePageCb = null, visitedCb = null) => {
   let storePage = storePageCb;
   // default storePage callback
   if (typeof storePage !== 'function') {
-    storePage = defaultStorage;
+    storePage = defaultStorage();
   }
-  // default visited callback
+  // visited callback
   let visited = visitedCb;
   if (typeof visited !== 'function') {
-    visited = defaultTracker;
+    if (config.get('command.options.store') === 'paths') {
+      visited = pathsTracker(config);
+    } else {
+      visited = defaultTracker();
+    }
   }
   // call it!
   crawlHandler(url, depth, storePage, visited);

@@ -20,6 +20,7 @@ const configLoader = (directory) => {
   const config = convict(schema);
   convict.addParser({ extension: ['yml', 'yaml'], parse: yaml.load });
   config.loadFile(`${process.cwd()}/${directory}/config.yaml`).validate();
+  config.set('command.directory', directory);
   return config;
 };
 
