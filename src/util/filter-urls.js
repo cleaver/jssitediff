@@ -1,10 +1,10 @@
 /**
  * Utility module for URL filtering
  *
- * @module util/filteredUrls
+ * @module util/filterUrls
  */
 /**
- * @function filteredUrls
+ * @function filterUrls
  * Filter a list of URLs, removing external links and duplicates.
  *
  * @param {URL} page - URL of the page.

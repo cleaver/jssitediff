@@ -5,7 +5,7 @@
  */
 const axios = require('axios');
 const cheerio = require('cheerio');
-const filterUrls = require('../../util/filterUrls');
+const filterUrls = require('../../util/filter-urls');
 
 /**
  * @callback storePageCallback
