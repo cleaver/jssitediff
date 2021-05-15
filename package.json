@@ -4,8 +4,8 @@
   "description": "Compare versions of a website.",
   "main": "index.js",
   "repository": "https://github.com/cleaver/jssitediff",
-  "author": "cb",
-  "license": "gpl2",
+  "author": "Cleaver Barnes",
+  "license": "GPL-2.0-only",
   "dependencies": {
     "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.6",
