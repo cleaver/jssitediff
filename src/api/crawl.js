@@ -13,7 +13,7 @@ const pathsTracker = require('./tracker/paths-tracker');
  * Get the path for a crawl.
  *
  * @private
- * @param {object} config - Configuration object.
+ * @param {convict} config - Configuration object.
  * @returns {string} - path.
  */
 const getPath = (config) => {
@@ -40,7 +40,7 @@ const getPath = (config) => {
  * @function crawl
  * Crawl a website to a specified depth.
  *
- * @param {object} config - Configuration object for the crawl.
+ * @param {convict} config - Configuration object for the crawl.
  * @param {storePageCallback} storePageCb - Optional. Callback to store a crawled page.
  * @param {trackerCallback} visitedCb - Optional. Callback to track visited page.
  */
@@ -50,7 +50,7 @@ const crawl = (config, storePageCb = null, visitedCb = null) => {
   let storePage = storePageCb;
   // default storePage callback
   if (typeof storePage !== 'function') {
-    storePage = defaultStorage();
+    storePage = defaultStorage(config);
   }
   // visited callback
   let visited = visitedCb;
