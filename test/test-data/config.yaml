@@ -1,0 +1,9 @@
+---
+before:
+  url: http://localhost:9000
+
+after:
+  url: http://localhost:9000
+
+settings:
+  depth: 3
