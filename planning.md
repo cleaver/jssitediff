@@ -41,3 +41,6 @@ CLI -> API -> Handler
 ## Logging
 
 - wrap logger... choice between text output and json
+- logging failures:
+    - fail.before.txt
+    - fail.after.txt

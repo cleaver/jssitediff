@@ -28,8 +28,10 @@ const defaultStorage = (config) => {
    */
   return (url, status, page) => {
     if (status.status >= 400) {
+      // eslint-disable-next-line no-console
       console.warn(url.href, ' -> ', status.status, status.statusText);
     } else {
+      // eslint-disable-next-line no-console
       console.log(url.href, ' -> ', page('title').text());
       const [urlPath, filename] = normalizeUrlPath(url.pathname);
       const fullPath = [storageDir, urlPath].filter((e) => e).join(sep);
