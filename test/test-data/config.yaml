@@ -1,9 +1,9 @@
 ---
 before:
-  url: http://localhost:9000
+  url: http://example.com
 
 after:
-  url: http://localhost:9000
+  url: http://example2.com
 
 settings:
   depth: 3

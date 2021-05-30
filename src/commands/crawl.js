@@ -13,17 +13,26 @@ exports.desc = 'Crawl a website.';
 exports.builder = {
   ...globalOpts,
   depth: {
+    default: 3,
+    describe: 'Depth of crawl.',
     type: 'number',
   },
   target: {
     choices: ['before', 'after'],
     default: 'before',
+    describe: 'Crawl the `before` or the `after` site.',
     type: 'string',
   },
   store: {
     choices: ['pages', 'paths'],
     default: 'pages',
+    describe: 'Store the crawled pages to cache, or `paths.txt`.',
     type: 'string',
+  },
+  usepaths: {
+    default: false,
+    describe: 'Use `paths.txt` instead of crawling links on page.',
+    type: 'boolean',
   },
 };
 
@@ -41,6 +50,10 @@ exports.handler = (argv) => {
     throw new Error('`depth` must be set in config or command line.');
   }
   config.set('command.name', 'crawl');
-  config.set('command.options', { target: argv.target, store: argv.store });
+  config.set('command.options', {
+    target: argv.target,
+    store: argv.store,
+    usepaths: argv.usepaths,
+  });
   crawlApi(config);
 };

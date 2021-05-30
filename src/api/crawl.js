@@ -7,6 +7,7 @@ const crawlHandler = require('./handlers/crawl');
 const defaultStorage = require('./storage/default-storage');
 const defaultTracker = require('./tracker/default-tracker');
 const pathsTracker = require('./tracker/paths-tracker');
+const readPaths = require('./tracker/read-paths');
 
 /**
  * @function getPath
@@ -62,7 +63,14 @@ const crawl = (config, storePageCb = null, visitedCb = null) => {
     }
   }
   // call it!
-  crawlHandler(url, depth, storePage, visited);
+  if (config.get('command.options.usepaths')) {
+    const pathUrls = readPaths(config); // get the paths
+    pathUrls.forEach((pathUrl) => {
+      crawlHandler(pathUrl, 0, storePage, visited);
+    });
+  } else {
+    crawlHandler(url, depth, storePage, visited);
+  }
 };
 
 module.exports = crawl;
