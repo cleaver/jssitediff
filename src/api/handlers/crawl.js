@@ -43,21 +43,25 @@ const crawl = (url, depth, storePage, visited) => {
       if (depth > 0) {
         filterUrls(
           url,
-          page('a').map((i, a) => cheerio(a).attr('href'))
+          page('a').map((i, a) => page(a).attr('href'))
         ).forEach((link) => {
           crawl(link, depth - 1, storePage, visited);
         });
       }
     })
     .catch((error) => {
-      storePage(
-        url,
-        {
-          status: error.response.status,
-          statusText: error.response.statusText,
-        },
-        null
-      );
+      if (error.response?.status) {
+        storePage(
+          url,
+          {
+            status: error.response.status,
+            statusText: error.response.statusText,
+          },
+          null
+        );
+      } else {
+        throw error;
+      }
     });
 };
 
