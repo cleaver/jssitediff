@@ -20,16 +20,16 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       ## yarn install
-      - uses: borales/actions-yarn@v2.3.0
+      - uses: borales/actions-yarn@v4.2.0
         with:
           cmd: install
       ## yarn eslint
-      - uses: borales/actions-yarn@v2.3.0
+      - uses: borales/actions-yarn@v4.2.0
         with:
           cmd: eslint
       ## run tests -- works better than yarn test?
       - run: npm test
       ## yarn test -- seems to not run with right node version
-      - uses: borales/actions-yarn@v2.3.0
+      - uses: borales/actions-yarn@v4.2.0
         with:
           cmd: test
