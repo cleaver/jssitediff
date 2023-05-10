@@ -37,6 +37,8 @@ CLI -> API -> Handler
 - Handler:
     - execute the action
 
+## To do
+- axios: add options
 
 ## Logging
 
